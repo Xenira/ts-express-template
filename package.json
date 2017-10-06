@@ -1,0 +1,30 @@
+{
+  "name": "ews",
+  "version": "1.0.0",
+  "description": "ews service",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec \"ts-node ./src/index.ts\" -e ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lasse Sprengel",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.1",
+    "moment": "^2.18.1",
+    "mongoose": "^4.12.0",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "serve-favicon": "^2.4.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.0.37",
+    "@types/mongoose": "^4.7.23",
+    "@types/node": "^8.0.32",
+    "nodemon": "^1.12.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3"
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "name": "ews",
-  "version": "1.0.0",
-  "description": "ews service",
+  "name": "ts-express-template",
+  "version": "0.0.1",
+  "description": "Simple template to start an express app",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec \"ts-node ./src/index.ts\" -e ts",
@@ -26,5 +26,10 @@
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
     "typescript": "^2.5.3"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Xenira/ts-express-template"
   }
 }

@@ -19,6 +19,7 @@ const app = express();
 if (app.get('env') === 'development') {
   app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
   });
 }
 

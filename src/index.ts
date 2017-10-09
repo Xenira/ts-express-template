@@ -1,7 +1,7 @@
 import * as dbg from 'debug';
 import * as fs from 'fs';
-import * as NodeHttp from 'http';
-import * as NodeHttps from 'https';
+import * as http from 'http';
+import * as https from 'https';
 import app from './app';
 
 console.log('Starting server');
@@ -11,10 +11,8 @@ let server;
 
 if (app.get('env') === 'development') {
     console.log('Using HTTP for dev environment');
-    const http = NodeHttp;
     server = http.createServer(app);
 } else {
-    const http = NodeHttps;
     const options: any = {
         pfx: fs.readFileSync(__dirname + `/../sslcert/${process.env.CERT_NAME || 'cert.pfx'}`),
     };
@@ -22,7 +20,7 @@ if (app.get('env') === 'development') {
         options.passphrase = process.env.CERT_PASSWORD;
     }
 
-    server = http.createServer(options, app);
+    server = https.createServer(options, app);
 }
 
 /**

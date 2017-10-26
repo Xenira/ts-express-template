@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 // tslint:disable-next-line:no-var-requires
-const dbURI = require(__dirname + '/../../config.json').db.uri;
+const dbURI = process.env.DB_URI || require(__dirname + '/../../config.json').db.uri;
 
 mongoose.connect(dbURI, {
   useMongoClient: true,

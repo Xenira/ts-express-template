@@ -44,9 +44,9 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@^5.0.7":
-  version "5.0.7"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.0.7.tgz#20c7c2a6eab9448c7fe2cfd26933d2bf1a036575"
+"@types/mongoose@^5.0.10":
+  version "5.0.10"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.0.10.tgz#fb370719379ed1a96cae6000e71673e3dd1f4ffb"
   dependencies:
     "@types/events" "*"
     "@types/mongodb" "*"

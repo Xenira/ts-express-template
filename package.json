@@ -9,7 +9,7 @@
   },
   "author": "Lasse Sprengel",
   "dependencies": {
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "moment": "^2.21.0",

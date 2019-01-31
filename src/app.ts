@@ -1,6 +1,7 @@
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as express from 'express';
+import * as session from 'express-session';
 import * as logger from 'morgan';
 import * as passport from 'passport';
 import * as path from 'path';
@@ -12,7 +13,7 @@ import * as favicon from 'serve-favicon';
 import './config/passport';
 import './models/db';
 
-import routerV1 from './routes/api.v1';
+import router from './routes';
 
 const app = express();
 
@@ -29,10 +30,16 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  cookie: { secure: app.get('env') !== 'development', maxAge : 3600000 },
+  resave: true, saveUninitialized: true,
+  secret: 'keyboard cat',
+}));
 app.use(passport.initialize());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.session());
 
-app.use('/api/v1', routerV1);
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/api/v1', router);
 
 // error handlers
 
@@ -47,30 +54,32 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
     res.status(401);
-    res.json({ message: err.name + ': ' + err.message });
+    return res.json({ message: err.name + ': ' + err.message });
   }
+  next(err);
 });
 
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
+  console.warn('Registering dev error handler. If you see this message in prod use, there is something wrong.');
   app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    res.render('error', {
+    res.json({
       error: err,
       message: err.message,
     });
   });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use((err, req, res, next) => {
-  res.status(err.status || 500);
-  res.render('error', {
-    error: {},
-    message: err.message,
+} else {
+  // production error handler
+  // no stacktraces leaked to user
+  app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.json({
+      error: {},
+      message: err.message,
+    });
   });
-});
+}
 
 export default app;

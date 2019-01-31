@@ -3,10 +3,7 @@ import * as mongoose from 'mongoose';
 // tslint:disable-next-line:no-var-requires
 const dbURI = process.env.DB_URI || require(__dirname + '/../../config.json').db.uri;
 
-mongoose.connect(dbURI, {
-  useMongoClient: true,
-  /* other options */
-});
+mongoose.connect(dbURI, { useNewUrlParser: true });
 
 mongoose.connection.on('connected', () => {
   console.log('Mongoose connected to ' + dbURI);
@@ -23,4 +20,4 @@ mongoose.connection.on('disconnected', () => {
 // #################################
 // Import all mongo DB models here
 // #################################
-// import './model-name';
+import './user.model';

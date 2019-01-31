@@ -1,0 +1,62 @@
+Express Typescript Template with MongoDB and Passport
+=====================================================
+Lasse Sprengel <lasse.sprengel@pm.me>
+v1.0
+
+:toc:
+
+Simple template with support for MongoDB and Passport.
+
+.Why this template
+This template gives you a fundation for developing REST APIs. The Project shoud help you getting started by providing a foundation on which you can extend.
+
+.Whats inside?
+- Express server setup for APIs
+- MongoDB connection
+- Basic user management
+- Input validation
+
+== Usage
+
+.Getting the template
+Simply download the latest release from https://github.com/Xenira/ts-express-template/releases. Extract the archive and run `yarn install` or `npm install` from within the extracted folder.
+
+.Starting (With watcher)
+`yarn start` or `npm start`
+
+.Building
+
+`yarn build` or `npm build`
+
+== Environments
+
+PORT:: Sets the port the server binds to
+
+== Structure
+The folder structure is as follows:
+[options="header"]
+|===
+| Folder | Content | Files
+
+.2+| ./src .2+| Application source directory a| app.ts:: Initializes express and routing
+a| index.ts:: Starts the express application by binding to http(s)
+
+.3+| ./src/config .3+| Helper objects and Middleware a| passport.ts:: Passport configuration and middleware
+a| validation.ts:: Middleware that rejects requests that didnt validate successfully
+a| error.ts:: This contains a small custom Error class to make creating an Error easyer
+
+.2+| ./src/controllers .2+| Logic that is called from the router a| example.controller.ts:: Empty excample controller with handlers for every HTTP verb returning 'Im a teapot'
+a| user.controller.ts:: Handlers for login and registration
+
+.2+| ./src/models .2+| MongoDB connection and models a| db.ts:: Initializes database
+a| user.model.ts:: Base user model for login
+
+.2+| ./src/routes .2+| Routes that can be importet in app.ts and call the controller logic a| index.ts:: Base router that handles login and registers other routers
+a| user.ts:: Excample controller for authorized access.
+
+| ./src/public | Staticly accessable files | ---
+| ./sslcert | Place your certificates here | ---
+| ./config.json | Database and other config can be put here | ---
+| ./dist | Compiled JavaScript files (Only exists after build) | ---
+|===
+

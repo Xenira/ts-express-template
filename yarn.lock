@@ -48,13 +48,12 @@
     "@types/node" "*"
     "@types/range-parser" "*"
 
-"@types/express-session@^1.15.14":
-  version "1.15.14"
-  resolved "https://registry.yarnpkg.com/@types/express-session/-/express-session-1.15.14.tgz#76ae4fd6e2c7c02a241d469ea2426f422c841b3f"
-  integrity sha512-7kVzFTT0Jy0zmUYDt9ik76XbcqyS9NalV4gn4eLwhk1nGQn+lS/HjPODhG3Oi/GBR2w1LQHUdkz/5KICYMACiw==
+"@types/express-session@^1.17.1":
+  version "1.17.1"
+  resolved "https://registry.yarnpkg.com/@types/express-session/-/express-session-1.17.1.tgz#5d69dba9f31be7ffe1db8da3da432213688f59ba"
+  integrity sha512-XWiWXO+IOoiAj6rUG1HggCAl+ykY4GKo/Evwil+r9N2jHWq1zbAzKqjlGn5nmh/+Xl21SyF1bHyLrpoj7cjeYw==
   dependencies:
     "@types/express" "*"
-    "@types/node" "*"
 
 "@types/express-validator@^3.0.0":
   version "3.0.0"
